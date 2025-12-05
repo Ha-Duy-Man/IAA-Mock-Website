@@ -1,6 +1,6 @@
 // Mobile menu toggle and interactions
 document.addEventListener('DOMContentLoaded', function() {
-    const menuBtn = document.querySelector('.menu-btn');
+    const menuBtn = document.querySelector('.mobile-menu-btn') || document.querySelector('.menu-btn');
     const navMenu = document.querySelector('.nav-menu');
 
     if (menuBtn) {
