@@ -103,36 +103,63 @@ body {
 .navbar {
     background: var(--white);
     padding: 0;
+    position: relative;
 }
 
-.nav-content {
+.nav-main-row {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 15px 0;
+    padding: 20px 0;
+    gap: 40px;
+}
+
+.logo {
+    flex-shrink: 0;
 }
 
 .logo img {
     height: 60px;
     width: auto;
+    display: block;
 }
 
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 30px;
-    flex-wrap: wrap;
+    gap: 0;
     margin: 0;
     padding: 0;
+    flex: 1;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.nav-menu li {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.nav-menu li:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 20px;
+    background: #d0d0d0;
 }
 
 .nav-menu a {
-    color: var(--text-dark);
+    color: #333333;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 14px;
-    transition: color 0.3s;
-    position: relative;
+    padding: 8px 20px;
+    display: block;
+    transition: color 0.2s ease;
     white-space: nowrap;
 }
 
@@ -140,32 +167,18 @@ body {
     color: var(--primary-color);
 }
 
-.nav-menu a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--primary-color);
-    transition: width 0.3s;
-}
-
-.nav-menu a:hover::after {
-    width: 100%;
-}
-
-.nav-bottom {
-    padding: 10px 0;
-    border-top: 1px solid var(--border-color);
+.nav-contact-row {
+    padding: 12px 0;
+    border-top: 1px solid #e0e0e0;
 }
 
 .nav-contact {
-    color: var(--text-dark);
+    color: #333333;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 14px;
-    transition: color 0.3s;
+    transition: color 0.2s ease;
+    display: inline-block;
 }
 
 .nav-contact:hover {
@@ -815,8 +828,9 @@ body {
 
 /* Responsive Design */
 @media (max-width: 968px) {
-    .nav-content {
+    .nav-main-row {
         flex-wrap: wrap;
+        gap: 20px;
     }
 
     .nav-menu {
@@ -829,17 +843,22 @@ body {
         flex-direction: column;
         padding: 20px;
         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        gap: 15px;
+        gap: 0;
         z-index: 1000;
+        border-top: 1px solid var(--border-color);
     }
 
     .nav-menu.active {
         display: flex;
     }
 
-    .nav-bottom {
-        width: 100%;
-        order: 3;
+    .nav-menu li::after {
+        display: none;
+    }
+
+    .nav-menu a {
+        padding: 15px 20px;
+        border-bottom: 1px solid #f0f0f0;
     }
 
     .hero-title {
